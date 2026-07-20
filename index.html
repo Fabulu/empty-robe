@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Empty Robe: The Case Against Dōgen's Transmission</title>
+<style>
+  /* ---------- tokens ---------- */
+  :root{
+    --paper:#f2f0e9;      /* cool washi */
+    --ink:#211e1a;        /* sumi */
+    --mut:#6d675c;        /* worn stone */
+    --line:#d6d1c3;       /* hairline */
+    --seal:#a5342a;       /* cinnabar vermilion, the only accent */
+    --wash:#eae7dd;       /* quiet panel wash */
+    --display:Didot,"Bodoni MT","Big Caslon","Baskerville Old Face",Baskerville,"Hoefler Text","Iowan Old Style",Georgia,serif;
+    --body:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    --hanfont:"Songti SC","Noto Serif CJK SC","Yu Mincho","MS Mincho","SimSun",serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#141311; --ink:#e4dfd3; --mut:#98917f; --line:#35322b;
+      --seal:#d0684f; --wash:#1d1b17;
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#f2f0e9; --ink:#211e1a; --mut:#6d675c; --line:#d6d1c3;
+    --seal:#a5342a; --wash:#eae7dd;
+  }
+  :root[data-theme="dark"]{
+    --paper:#141311; --ink:#e4dfd3; --mut:#98917f; --line:#35322b;
+    --seal:#d0684f; --wash:#1d1b17;
+  }
+
+  /* ---------- base ---------- */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:1.1875rem;
+    line-height:1.66;
+    border-top:4px solid var(--seal);
+  }
+  ::selection{background:var(--seal);color:var(--paper)}
+  a{color:var(--seal);text-decoration-thickness:1px;text-underline-offset:2.5px}
+  a:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+  strong{font-weight:700}
+  .han{font-family:var(--hanfont);font-size:1.04em}
+
+  .wrap{max-width:40rem;margin:0 auto;padding:5.5rem 1.4rem 12vh}
+
+  /* ---------- masthead ---------- */
+  header{position:relative;margin-bottom:3.4rem;padding-bottom:2.6rem;border-bottom:1px solid var(--line)}
+  .seal{
+    width:3.1rem;height:3.1rem;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--seal);border-radius:2px;
+    color:var(--seal);font-family:var(--hanfont);font-size:1.7rem;line-height:1;
+    transform:rotate(-4deg);
+    margin:0 0 1.8rem;
+    user-select:none;
+  }
+  .kicker{
+    margin:0 0 1.1rem;
+    font-family:var(--sans);font-size:.72rem;font-weight:600;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--seal);
+  }
+  h1{
+    margin:0 0 1.1rem;
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(2.7rem,8vw,4.3rem);
+    line-height:1.02;letter-spacing:-.015em;
+    text-wrap:balance;
+  }
+  .sub{margin:0;font-size:1.18rem;line-height:1.55;font-style:italic;color:var(--mut)}
+  .standfirst{
+    margin:2.3rem 0 0;padding-left:1.2rem;
+    border-left:2px solid var(--seal);
+    font-size:1.13rem;line-height:1.6;
+  }
+  .spine{
+    display:none;
+    position:absolute;top:.3rem;right:-5.6rem;
+    writing-mode:vertical-rl;
+    font-family:var(--hanfont);font-size:.95rem;
+    letter-spacing:.4em;color:var(--mut);opacity:.55;
+    user-select:none;
+  }
+  @media (min-width:58rem){ .spine{display:block} }
+
+  /* ---------- body copy ---------- */
+  p{margin:1.2rem 0}
+  .opener::first-letter{
+    float:left;
+    font-family:var(--display);font-weight:500;
+    font-size:3.55em;line-height:.82;
+    padding:.06em .13em 0 0;
+    color:var(--seal);
+  }
+
+  /* ---------- sections ---------- */
+  h2{
+    position:relative;
+    margin:3.8rem 0 .4rem;
+    font-family:var(--display);font-weight:600;
+    font-size:1.55rem;line-height:1.2;letter-spacing:-.005em;
+    text-wrap:balance;
+  }
+  h2 .num{
+    display:block;margin-bottom:.55rem;
+    font-family:var(--display);font-weight:500;font-style:italic;
+    font-size:.95rem;letter-spacing:.24em;
+    color:var(--seal);
+  }
+  @media (min-width:62rem){
+    h2 .num{
+      position:absolute;top:.42em;left:-5rem;
+      width:3.9rem;margin:0;text-align:right;
+      font-size:1.05rem;
+    }
+  }
+
+  /* ---------- excerpts (verbatim quotations) ---------- */
+  blockquote{
+    margin:2.3rem 0;
+    padding:1.35rem .15rem 1.15rem;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    font-size:1rem;line-height:1.68;
+  }
+  blockquote p{margin:.45rem 0}
+  .lede{font-weight:600;letter-spacing:.02em;color:var(--seal)}
+  cite{
+    display:flex;align-items:center;gap:.6em;
+    margin-top:.95rem;
+    font-family:var(--sans);font-style:normal;
+    font-size:.8rem;letter-spacing:.05em;color:var(--mut);
+  }
+  cite::before{
+    content:"";flex:none;
+    width:.55em;height:.55em;
+    background:var(--seal);
+    transform:rotate(-6deg);
+  }
+
+  /* ---------- ornament divider ---------- */
+  .orn{display:flex;justify-content:center;gap:1rem;margin:3.8rem 0;border:0}
+  .orn i{
+    width:.42rem;height:.42rem;background:var(--seal);opacity:.85;
+  }
+  .orn i:first-child{transform:rotate(-8deg)}
+  .orn i:last-child{transform:rotate(8deg)}
+
+  /* ---------- scope note ---------- */
+  .note{
+    margin:3.2rem 0 0;
+    padding:1.5rem 1.7rem 1.4rem;
+    border:1px solid var(--line);
+    background:var(--wash);
+    font-size:.96rem;line-height:1.62;
+  }
+  .note > strong{
+    display:block;margin-bottom:.65rem;
+    font-family:var(--sans);font-weight:600;
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--seal);
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:4.6rem;padding-top:2rem;
+    border-top:1px solid var(--line);
+    font-family:var(--sans);
+    font-size:.84rem;line-height:1.55;color:var(--mut);
+  }
+  footer p{margin:1rem 0}
+  footer strong{color:var(--ink)}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header>
+  <div class="seal" aria-hidden="true">空</div>
+  <p class="kicker">A Philological Argument</p>
+  <h1>The Empty Robe</h1>
+  <p class="sub">Dōgen's transmission from Rujing is uncorroborated in the Chinese record, contradicted by his master's own words, doctrinally late, and textually borrowed. The evidence is drawn largely from one of Dōgen's own admirers.</p>
+  <p class="standfirst">The claim is narrow. The <em>dharma</em> Dōgen said he brought back from China cannot be found in the Chinese sources, a point that a sympathetic scholar, Carl Bielefeldt, concedes piece by piece in a study written in defense of its subject. Whether Dōgen crossed to China at all is a separate question, and this page does not dispute it.</p>
+  <div class="spine" aria-hidden="true">天童如淨　希玄道元</div>
+</header>
+
+<p class="opener">Chan is a tradition preoccupied with the record. Every master is placed in a genealogy; every transmission is documented, dated, and cross-checked against a thousand years of lamp-histories and recorded sayings. In such a tradition, silence is itself a datum. When the entire Chinese archive fails to mention a man who claimed to have received the true dharma at Mount Tiantong, that silence constitutes evidence.</p>
+
+<p>The facts on which the case rests are neither novel nor contested. They come from <strong>Carl Bielefeldt's <em>Dōgen's Manuals of Zen Meditation</em></strong> (University of California Press, 1988), a study written with evident admiration for its subject, and from a direct search of the Chinese Buddhist canon. That the case can be assembled almost entirely from an admirer's concessions is itself central to the argument.</p>
+
+<h2><span class="num">I</span>The silence of the Chinese record</h2>
+<p>Consider first what ought to exist but does not. Rujing (<span class="han">天童如淨</span>, 1162–1227) is real and attested: he appears across Chinese texts, and his recorded sayings are preserved in the canon. No comparable attestation exists for his supposed Japanese heir. A search of the full Chinese Buddhist canon (4,990 texts) for Dōgen's distinctive dharma-name <span class="han">希玄</span> returns nothing that identifies him; the common characters <span class="han">道元</span> resolve to other men and coincidences. No Chinese lamp-history lists him among Rujing's heirs. Nor is this how the tradition ordinarily treated foreign students: Japanese pilgrims such as Ennin and Jōjin were noticed and recorded when they studied in China. Dōgen's supposed transmission left no mark on the tradition that allegedly produced it.</p>
+
+<h2><span class="num">II</span>The master who taught the opposite</h2>
+<p>The silence of the archive is compounded by the content of Rujing's <em>own</em> recorded sayings, compiled by his Chinese students. The master Dōgen later recalled does not appear in them. As Bielefeldt observes:</p>
+<blockquote>
+<p>"the Ju-ching of this text bears scant resemblance to the man Dogen recalls as his 'former master, the old Buddha.' … Neither, indeed, do we find mention of any of the central terminology of Japanese Soto: 'the treasury of the eye of the true dharma,' 'the unity of practice and enlightenment,' 'sloughing off of body and mind,' 'nonthinking,' or 'just sitting.' Instead what we find is still another Sung master … recommending for the control of random thoughts concentration on Chao-chou's 'wu,' the famous kung-an that was the centerpiece of <span class="lede">Ta-hui's k'an-hua Ch'an</span>."</p>
+<cite>Bielefeldt 1988, p. 27</cite>
+</blockquote>
+<p>Every hallmark of "Dōgen Zen" (the treasury of the true dharma eye, the unity of practice and enlightenment, dropping off body and mind, non-thinking, just sitting) is missing from the master who supposedly transmitted them. More damaging still, the one method Rujing <em>is</em> recorded teaching is the koan-gazing practice of Dahui, the very approach Dōgen spent his life attacking. The purported source of the transmission is thus on record teaching its opposite.</p>
+
+<h2><span class="num">III</span>The fifteen-year gap</h2>
+<p>A genuine and formative transmission would be expected to leave its mark on a man's earliest work. In Dōgen's case the pattern is inverted: his claims about Rujing's uniqueness surface only in the 1240s, more than a decade after his return and at the midpoint of his career. Here Bielefeldt does more than concede; he states the dilemma outright:</p>
+<blockquote>
+<p>"either Dogen <strong>only discovered (or invented) his inheritance</strong> long after he had left Ju-ching and written his first meditation manual, or, in that first manual, he purposely denied his inheritance and advocated a form of meditation he himself knew to be out of keeping with the true tradition of the Buddhas and Patriarchs."</p>
+<cite>Bielefeldt 1988, p. 162</cite>
+</blockquote>
+<p>Either horn of the dilemma breaks the traditional account: an inheritance discovered (or invented) years after the fact, or an inheritance knowingly disowned in the founder's first book. The story as traditionally told survives on neither reading.</p>
+
+<h2><span class="num">IV</span>The borrowed manual</h2>
+<p>There is also the manual itself. The <em>Fukanzazengi</em>, Dōgen's founding meditation text, presented as the fruit of his unique transmission, is largely a Chinese work he publicly disparaged:</p>
+<blockquote>
+<p>"Nearly a third of his first version of the Fukan zazen gi — <strong>including all of its actual account of zazen</strong> — is lifted directly from the Chinese text, and much of the rest is clearly derived from it."</p>
+<cite>Bielefeldt 1988, p. 106 (on Zongze's <em>Zuochan yi</em>)</cite>
+</blockquote>
+<p>The operative meditation instructions came from a manual in the standard monastic code rather than from Rujing, and Dōgen was still quietly copying that manual as late as 1245, years after he had formally rejected it.</p>
+
+<h2><span class="num">V</span>The edited encounter</h2>
+<p>The reshaping is not confined to Dōgen's own story. Take his handling of a famous Chan case: the encounter in which Mazu, sitting in order to become a Buddha, is corrected by his teacher Huairang. The story's rebuke of the very practice Dōgen would champion is blunt:</p>
+<blockquote>
+<p>"How can you make a Buddha by sitting in meditation? … if you're attached to the form of sitting, you're not reaching its principle."</p>
+<cite>the Mazu–Huairang dialogue, in Bielefeldt's translation, p. 141</cite>
+</blockquote>
+<p>Dōgen retells this case to <em>defend</em> seated meditation, the practice it rebukes. His commentary, in Bielefeldt's words, "turns the text inside out" and "stands the teaching on its head," ending in "a strong assertion of the orthodoxy of the meditation of the seated Buddha" (pp. 142, 144). And in the retelling he alters the record itself, splicing in a clause drawn from a different text:</p>
+<blockquote>
+<p>"Dogen's introduction to the conversation here … includes elements from Ma-tsu's biography … to make it appear — as the original version does not — that he had already received his master's certification when the conversation took place."</p>
+<cite>Bielefeldt 1988, p. 191 n. 10</cite>
+</blockquote>
+<p>The certification is Mazu's, from Huairang, not Dōgen's own: a narrower thing than a forged credential, and in one respect a more telling one. Handed a transmission story that cut against his teaching, Dōgen both inverted its reading and edited its record. Whether the two moves served a single purpose is not something Bielefeldt claims; that the record was reshaped where it resisted him is.</p>
+
+<h2><span class="num">VI</span>The hagiographic quest</h2>
+<p>The famous quest, in which the young Dōgen rejects false Linji teachers, wanders China in search of a true master, and finds Rujing at last, derives from later legend rather than from the contemporary record. In his own writings it barely exists:</p>
+<blockquote>
+<p>"if we limit ourselves to his own reports, our knowledge of his China years is <strong>sketchy at best</strong>." … "we have no firm evidence that Dogen ever left Mt. T'ien-t'ung … The tradition of his wanderings in search of a true teacher seems to be based <strong>solely on his passing reference</strong> to a trip to the region of Mt. T'ien-t'ai."</p>
+<cite>Bielefeldt 1988, p. 25</cite>
+</blockquote>
+<p>The founding pilgrimage rests, by Bielefeldt's own accounting, on one passing remark.</p>
+
+<h2><span class="num">VII</span>The unauthenticatable record</h2>
+<p>One document remains: the <em>Hōkyōki</em>, the private record that supposedly preserves Rujing's personal instruction. It cannot bear the weight placed on it. It surfaced only after Dōgen's death, in his disciple's hands, and Bielefeldt is blunt: "we cannot say with any certainty even how much of the extant text is Dogen's work, let alone how much accurately records the words of Ju-ching" (p. 28). The last evidentiary prop thus gives way.</p>
+
+<h2><span class="num">VIII</span>The phrase in his own hand</h2>
+<p>One phrase can be traced all the way back. Dōgen's whole claim rests on a single moment: he says that under Rujing he "dropped off body and mind" (<span class="han">身心脫落</span>), and that in those words his master handed him the true teaching. This is the heart of the story. So there is a simple question worth asking. Does that phrase actually appear anywhere in what Rujing's own students wrote down?</p>
+<p>It does not. Rujing's teachings survive in two collections, both put together by his Chinese students in China. Search them end to end and the phrase is not in either one. It turns up in exactly one place, and that place is a note Dōgen wrote himself, years later, back home in Japan, and attached to the end of one of the collections. The text says as much in plain terms: it was "recorded by the monk Dōgen." In that note, in his own words, he describes his own awakening:</p>
+<blockquote>
+<p>"A practitioner of Chan drops off body and mind. Why, then, are you merely dozing? Hearing these words, I was suddenly and greatly awakened. … I said, 'I have come with body and mind dropped off.' The master said, 'Body and mind dropped off; dropped off body and mind.'"</p>
+<cite>Rujing's supplementary record, Taishō no. 2002B: the note added by Dōgen (<span class="han">身心脫落</span>)</cite>
+</blockquote>
+<p>So the one and only record of Rujing teaching this phrase was written by Dōgen, about Dōgen, in Dōgen's own hand. Everything his Chinese students set down is silent. This does not prove Rujing never said the words; his complete record is lost, and plenty of a teacher's sayings reach us through a single student. But it means the most important line in the whole story has exactly one source, and that source is the man whose reputation depends on it being true.</p>
+
+<div class="orn" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<h2>The tell: a defender's concession</h2>
+<p>Read as a whole, the book displays a recurring pattern: Bielefeldt states a fact that undermines the traditional account, then softens it. The clearest instance comes at the end, after he has conceded that we cannot say what Dōgen actually did to earn his fame:</p>
+<blockquote>
+<p>"Some readers may well find it ludicrous that we have come this far in our study of the Fukan zazen gi only to admit that we cannot finally determine … just what it was that its author himself did to earn his reputation as one of the foremost Zen meditation masters. <strong>But this is, after all, the secret of Zen meditation, and it may be that Dogen's real genius lies precisely in his uncanny ability to talk about the secret openly and at length without ever giving it away.</strong>"</p>
+<cite>Bielefeldt 1988, p. 159</cite>
+</blockquote>
+<p>Here an absence of evidence is converted into a compliment. Bielefeldt plainly <em>wants</em> Dōgen to survive the inquiry, and that is precisely why his findings carry weight: they are the concessions of an admirer rather than the charges of an opponent, facts he could not in honesty suppress.</p>
+
+<p>The findings must finally be weighed together. Any one of them, taken alone, admits an innocent explanation (archives lose things, teachings evolve, memories improve with age); together they do not. The pattern comprises silence where the record is dense; a master whose own sayings teach the opposite; a claim that appears fifteen years late; a manual copied from a text its author disowned; a transmission story reshaped where it cut against him; a quest built on one passing remark; a private record no one can authenticate; and the very phrase of his awakening found nowhere but in his own hand. Facts of this kind would be expected to scatter randomly around a genuine event; these converge instead on a constructed one.</p>
+
+<div class="note">
+<strong>What this argues, and what it does not.</strong> The claim advanced here is that Dōgen's <em>dharma-transmission</em> is a later construction: unattested in China, contradicted by Rujing's own record, absent from Dōgen's writings for fifteen years, and textually borrowed. The claim is <em>not</em> that Dōgen never physically traveled to China; Bielefeldt assumes that he did, and this essay follows him on the point. What is at issue is the transmission itself, not the journey.
+</div>
+
+<footer>
+<p><strong>Source.</strong> Carl Bielefeldt, <em>Dōgen's Manuals of Zen Meditation</em>, Berkeley: University of California Press, 1988. Every quotation attributed to Bielefeldt is transcribed verbatim from that edition and cited to its page; ellipses (…) mark omitted words and change nothing else; wording, spelling, and punctuation otherwise follow the print original. Quotations are reproduced for purposes of criticism and commentary. The canon and concordance searches were run against the CBETA Chinese Buddhist canon (<span class="han">天童如淨</span> / <span class="han">希玄道元</span>); the primary-source passage in section VIII is transcribed from Rujing's supplementary record (Taishō no. 2002B) as edited in that canon, and its English rendering is a working translation, not Bielefeldt's.</p>
+<p><strong>In fairness to Bielefeldt.</strong> The interpretive conclusion drawn on this page is not Bielefeldt's. His book is a work of sympathetic scholarship; he documents these facts while defending Dōgen's stature as a religious thinker, and he does not conclude, as this page does, that the transmission is a fabrication. Readers who wish to weigh his qualifications as well as the facts should consult the book in full.</p>
+<p><strong>Corrections.</strong> 2026-07-15: Section V originally ran under the heading "The doctored certificate" and misread Bielefeldt's note 10 (p. 191) as Dōgen misrepresenting <em>his own</em> certification. The note in fact concerns Dōgen's editing of the Mazu–Huairang encounter, where the figure shown as already certified is Mazu, not Dōgen. The section has been rewritten accordingly, and now claims only what the source supports. With thanks to the reader who identified the error. This page corrects its mistakes in the open, by the same standard it holds its subject to.</p>
+<p class="network"><strong>ReadZen network.</strong> <a href="https://readzen.pages.dev">ReadZen</a> &middot; The Empty Robe (you are here) &middot; <a href="https://suzuki-vs-zen.pages.dev">Suzuki vs. Zen</a></p>
+</footer>
+
+</main>
+</body>
+</html>
